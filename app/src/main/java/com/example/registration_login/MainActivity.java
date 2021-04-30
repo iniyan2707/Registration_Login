@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnRegister;
     private TextView regText;
     private FirebaseAuth firebaseAuth;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         setUpUiViews();
         firebaseAuth= FirebaseAuth.getInstance();
 
+
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -37,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 {
                    String user_email= userEmail.getText().toString().trim();
                    String user_password=userPassword.getText().toString().trim();
+                   progressBar.setVisibility(View.VISIBLE);
                    firebaseAuth.createUserWithEmailAndPassword(user_email,user_password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                        @Override
                        public void onComplete(@NonNull Task<AuthResult> task) {
@@ -45,11 +49,15 @@ public class MainActivity extends AppCompatActivity {
                            {
                                Toast.makeText(MainActivity.this,"Registration Successfull",Toast.LENGTH_SHORT).show();
                                Intent i=new Intent(MainActivity.this,LoginActivity.class);
+                               progressBar.setVisibility(View.INVISIBLE);
+                               finish();
                                startActivity(i);
+
                            }
                            else
                            {
                                Toast.makeText(MainActivity.this,"Registration Failed",Toast.LENGTH_SHORT).show();
+                               progressBar.setVisibility(View.GONE);
 
                            }
                        }
@@ -62,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent=new Intent(MainActivity.this,LoginActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -74,6 +83,8 @@ public class MainActivity extends AppCompatActivity {
         userConfirmPassword=(EditText) findViewById(R.id.ConfirmPassword);
         btnRegister= (Button) findViewById(R.id.btnRegister);
         regText =(TextView) findViewById(R.id.RegTxt);
+        progressBar =(ProgressBar) findViewById(R.id.progressBar);
+
     }
     private Boolean validate()
     {
@@ -85,6 +96,10 @@ public class MainActivity extends AppCompatActivity {
         if(name.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty())
         {
             Toast.makeText(this,"Please enter all the details",Toast.LENGTH_SHORT).show();
+        }
+        else if(password.length()< 6)
+        {
+            userPassword.setError("Password must be >= 6 characters");
         }
         else if(!confirmPassword.equals(password))
         {
