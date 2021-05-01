@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,6 +17,16 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.Properties;
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setTitle("Registration");
         setUpUiViews();
         firebaseAuth= FirebaseAuth.getInstance();
 
@@ -48,10 +60,12 @@ public class MainActivity extends AppCompatActivity {
                            if(task.isSuccessful())
                            {
                                Toast.makeText(MainActivity.this,"Registration Successfull",Toast.LENGTH_SHORT).show();
+
                                Intent i=new Intent(MainActivity.this,LoginActivity.class);
-                               progressBar.setVisibility(View.INVISIBLE);
                                finish();
                                startActivity(i);
+                               sendEmail();
+
 
                            }
                            else
@@ -65,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+
         regText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -110,6 +126,20 @@ public class MainActivity extends AppCompatActivity {
             result=true;
         }
         return result;
+
+    }
+    private void sendEmail()
+    {
+        final String fromEmail="iniyan.cool3@gmail.com";
+        final String fromPassword="arunraj32";
+
+        String toEmail=userEmail.getText().toString();
+        String subject="Scient Registration";
+        String messageToSend="You have successfully registered with scient";
+        new SendmailTask(MainActivity.this,progressBar).execute(fromEmail,
+                fromPassword, toEmail, subject, messageToSend);
+
+
 
     }
 }

@@ -32,16 +32,14 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        setTitle("Login");
+
         setUpUIViews();
         fAuth=FirebaseAuth.getInstance();
 
         FirebaseUser user= fAuth.getCurrentUser();
 
-        if(user != null)
-        {
-            finish();
-            startActivity(new Intent(LoginActivity.this,UserPage.class));
-        }
+
         loginTxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(validate())
                 {
-                    String user_email=loginEmail.getText().toString().trim();
+                    final String user_email=loginEmail.getText().toString().trim();
                     String user_password=loginPassword.getText().toString().trim();
                     loginProgessBar.setVisibility(View.VISIBLE);
                     fAuth.signInWithEmailAndPassword(user_email,user_password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -65,6 +63,7 @@ public class LoginActivity extends AppCompatActivity {
                                 Toast.makeText(LoginActivity.this,"Login Successfull",Toast.LENGTH_SHORT).show();
                                 Intent i=new Intent(LoginActivity.this,UserPage.class);
                                 loginProgessBar.setVisibility(View.INVISIBLE);
+                                i.putExtra("email",user_email);
                                 finish();
                                 startActivity(i);
 
