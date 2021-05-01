@@ -15,14 +15,6 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 
-
-
-
-
-
-
-
-
 public class UserPage extends AppCompatActivity {
 
     private Button logoutBtn;
@@ -73,8 +65,8 @@ public class UserPage extends AppCompatActivity {
 
     private void sendEmail()
     {
-        final String fromEmail="iniyan.cool3@gmail.com";
-        final String fromPassword="arunraj32";
+        final String fromEmail="iniyan2099@gmail.com";
+        final String fromPassword="zootopia12";
         Bundle extras=getIntent().getExtras();
         String toEmail=extras.getString("email");
         String subject="Scient";

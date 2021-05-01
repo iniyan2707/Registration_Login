@@ -19,18 +19,19 @@
         android:textSize="25dp" />
 
     <EditText
+        android:id="@+id/Username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/Registration"
-        android:id="@+id/Username"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="30dp"
         android:layout_marginRight="15dp"
         android:background="@android:color/black"
         android:fontFamily="@font/aclonica"
         android:hint="UserName"
+        android:padding="5dp"
         android:textColor="#FAF7F7"
-        android:textColorHint="#FAF7F7"
+        android:textColorHint="#AAA8A8"
         android:textSize="20sp" />
 
     <EditText
@@ -41,12 +42,13 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="30dp"
         android:layout_marginRight="15dp"
+        android:padding="5dp"
         android:background="@android:color/black"
         android:fontFamily="@font/aclonica"
         android:hint="Email"
         android:inputType="textEmailAddress"
         android:textColor="#FAF7F7"
-        android:textColorHint="#FAF7F7"
+        android:textColorHint="#AAA8A8"
         android:textSize="20sp" />
 
     <EditText
@@ -57,12 +59,13 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="30dp"
         android:layout_marginRight="15dp"
+        android:padding="5dp"
         android:background="@android:color/black"
         android:fontFamily="@font/aclonica"
         android:hint="Password"
         android:inputType="textPassword"
         android:textColor="#FAF7F7"
-        android:textColorHint="#FAF7F7"
+        android:textColorHint="#AAA8A8"
         android:textSize="20sp" />
 
     <EditText
@@ -77,8 +80,9 @@
         android:fontFamily="@font/aclonica"
         android:hint="Confirm Password"
         android:inputType="textVisiblePassword"
+        android:padding="5dp"
         android:textColor="#FAF7F7"
-        android:textColorHint="#FAF7F7"
+        android:textColorHint="#AAA8A8"
         android:textSize="20sp" />
     <Button
         android:layout_width="match_parent"

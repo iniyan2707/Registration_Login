@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
                            if(task.isSuccessful())
                            {
-                               Toast.makeText(MainActivity.this,"Registration Successfull",Toast.LENGTH_SHORT).show();
+                               Toast.makeText(MainActivity.this,"Thank you for registration",Toast.LENGTH_SHORT).show();
 
                                Intent i=new Intent(MainActivity.this,LoginActivity.class);
                                finish();
@@ -130,8 +130,8 @@ public class MainActivity extends AppCompatActivity {
     }
     private void sendEmail()
     {
-        final String fromEmail="iniyan.cool3@gmail.com";
-        final String fromPassword="arunraj32";
+        final String fromEmail="iniyan2099@gmail.com";
+        final String fromPassword="zootopia12";
 
         String toEmail=userEmail.getText().toString();
         String subject="Scient Registration";
