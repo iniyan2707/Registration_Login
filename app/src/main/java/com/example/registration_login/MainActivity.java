@@ -136,8 +136,9 @@ public class MainActivity extends AppCompatActivity {
         String toEmail=userEmail.getText().toString();
         String subject="Scient Registration";
         String messageToSend="You have successfully registered with scient";
-        new SendmailTask(MainActivity.this,progressBar).execute(fromEmail,
-                fromPassword, toEmail, subject, messageToSend);
+        SendmailTask sendmailTask=new SendmailTask();
+
+       sendmailTask.execute(fromEmail,fromPassword, toEmail, subject, messageToSend);
 
 
 

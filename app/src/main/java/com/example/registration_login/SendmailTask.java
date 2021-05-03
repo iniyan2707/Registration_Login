@@ -7,15 +7,10 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-public class SendmailTask extends AsyncTask {
-    private Activity sendMailActivity;
-    private ProgressBar progressBar;
+public class SendmailTask extends AsyncTask{
 
-    public SendmailTask(Activity activity, ProgressBar progressBar)
-    {
-     sendMailActivity=activity;
-     this.progressBar=progressBar;
-    }
+
+
 
 
     @Override
@@ -32,7 +27,7 @@ public class SendmailTask extends AsyncTask {
         }
         catch (Exception e)
         {
-            Toast.makeText(sendMailActivity,e.getMessage(), Toast.LENGTH_SHORT).show();
+            throw new RuntimeException(e);
         }
         return null;
 
@@ -40,8 +35,7 @@ public class SendmailTask extends AsyncTask {
 
     @Override
     protected void onPostExecute(Object o) {
-        Toast.makeText(sendMailActivity,"Email sent", Toast.LENGTH_SHORT).show();
-        progressBar.setVisibility(View.INVISIBLE);
+
 
 
     }
