@@ -33,7 +33,7 @@ import static android.content.Context.MODE_PRIVATE;
             @Override
             public void run() {
 
-                sendemail();
+                sendEmail();
 
             }
         }).start();
@@ -47,20 +47,7 @@ import static android.content.Context.MODE_PRIVATE;
     }*/
 
 
-    /*private void sendemail() {
 
-        final String fromEmail = "iniyan2099@gmail.com";
-        final String fromPassword = "zootopia12";
-        String subject = "Scient";
-        String messageToSend = "You have clicked scient image";
-        SharedPreferences sharedPreferences = getSharedPreferences(LoginActivity.SHARED_PREFS, MODE_PRIVATE);
-        String toEmail = sharedPreferences.getString(LoginActivity.Login_Email, "");
-
-        SendmailTask sendmailTask = new SendmailTask();
-
-        sendmailTask.execute(fromEmail, fromPassword, toEmail, subject, messageToSend);
-
-    }*/
     private void sendEmail()
     {
         final String fromEmail="iniyan2099@gmail.com";
@@ -79,16 +66,3 @@ import static android.content.Context.MODE_PRIVATE;
 }
 
 
-
-
-/*Toast.makeText(context,"alarm",Toast.LENGTH_SHORT).show();
-final String fromEmail="iniyan2099@gmail.com";
-final String fromPassword="zootopia12";
-        String subject="Scient";
-        String messageToSend="You have clicked scient image";
-        SharedPreferences sharedPreferences=context.getSharedPreferences(LoginActivity.SHARED_PREFS,MODE_PRIVATE);
-        String toEmail= sharedPreferences.getString(LoginActivity.Login_Email,"");
-
-        SendmailTask sendmailTask=new SendmailTask();
-
-        sendmailTask.execute(fromEmail,fromPassword,toEmail, subject, messageToSend);  */
